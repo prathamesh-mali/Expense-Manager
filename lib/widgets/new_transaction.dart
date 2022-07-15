@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
 
-  NewTransaction(this.addTx);
+  const NewTransaction(this.addTx, {Key? key}) : super(key: key);
 
   @override
   State<NewTransaction> createState() => _NewTransactionState();
@@ -81,7 +80,7 @@ class _NewTransactionState extends State<NewTransaction> {
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.done,
                 ),
-                Container(
+                SizedBox(
                   height: 70,
                   child: Row(
                     children: [

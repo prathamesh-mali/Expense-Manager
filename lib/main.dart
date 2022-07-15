@@ -1,8 +1,6 @@
 import 'package:expenses_manager/widgets/charts.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import 'package:flutter/services.dart';
 import 'package:expenses_manager/widgets/new_transaction.dart';
 import 'package:expenses_manager/widgets/transaction_list.dart';
 import 'package:expenses_manager/models/transaction.dart';
@@ -122,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.add))
       ],
     );
-    final txListWidget = Container(
+    final txListWidget = SizedBox(
         height: (mediaQuery.size.height -
                 appBar.preferredSize.height -
                 mediaQuery.padding.top) *

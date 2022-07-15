@@ -1,12 +1,11 @@
 import 'package:expenses_manager/widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
 import '../models/transaction.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransaction;
-  Chart(this.recentTransaction);
+  const Chart(this.recentTransaction, {Key? key}) : super(key: key);
 
   List<Map<String, Object>> get groupedTransactionValues {
     return List.generate(7, (index) {
@@ -39,7 +38,6 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
     return Card(
       color: Color.fromARGB(255, 252, 248, 248),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),

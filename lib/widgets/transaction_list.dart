@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 import '../models/transaction.dart';
-import 'package:expenses_manager/main.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final Function deleteTx;
 
-  TransactionList(this.transactions, this.deleteTx);
+  const TransactionList(this.transactions, this.deleteTx, {Key? key})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -68,7 +68,7 @@ class TransactionList extends StatelessWidget {
                             icon: Icon(
                               Icons.delete,
                             ),
-                            label: Text(
+                            label: const Text(
                               'Delete',
                             ),
                             onPressed: () => deleteTx(transactions[index].id),

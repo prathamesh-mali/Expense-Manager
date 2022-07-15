@@ -11,14 +11,13 @@ class ChartBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
     return Container(
       decoration: BoxDecoration(color: Color.fromARGB(255, 252, 248, 248)),
       child: LayoutBuilder(
         builder: (ctx, constraints) {
           return Column(
             children: <Widget>[
-              Container(
+              SizedBox(
                 height: constraints.maxHeight * 0.15,
                 child: FittedBox(
                     fit: BoxFit.scaleDown,
@@ -29,7 +28,7 @@ class ChartBar extends StatelessWidget {
               SizedBox(
                 height: constraints.maxHeight * 0.05,
               ),
-              Container(
+              SizedBox(
                 height: constraints.maxHeight * 0.6,
                 width: 10,
                 child: Stack(children: [
@@ -53,7 +52,7 @@ class ChartBar extends StatelessWidget {
               SizedBox(
                 height: constraints.maxHeight * 0.05,
               ),
-              Container(
+              SizedBox(
                 height: constraints.maxHeight * 0.15,
                 child: FittedBox(
                     fit: BoxFit.scaleDown,
