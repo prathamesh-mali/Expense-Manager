@@ -107,6 +107,38 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget _buildLandscapeContent() {
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+      Text("Show Chart"),
+      Switch(
+        activeColor: Theme.of(context).colorScheme.secondary,
+        value: _showChart,
+        onChanged: (val) {
+          setState(() {
+            _showChart = val;
+          });
+        },
+      )
+    ]);
+  }
+
+  List<Widget> _buildPortraitContent(
+    MediaQueryData mediaQuery,
+    AppBar appBar,
+    Widget txListWidget,
+  ) {
+    return [
+      SizedBox(
+        height: (mediaQuery.size.height -
+                appBar.preferredSize.height -
+                mediaQuery.padding.top) *
+            0.3,
+        child: Chart(_recentTransactions),
+      ),
+      txListWidget,
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -134,38 +166,23 @@ class _MyHomePageState extends State<MyHomePage> {
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              if (isLandscape)
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Show Chart"),
-                      Switch(
-                        activeColor: Theme.of(context).colorScheme.secondary,
-                        value: _showChart,
-                        onChanged: (val) {
-                          setState(() {
-                            _showChart = val;
-                          });
-                        },
-                      )
-                    ]),
+              if (isLandscape) _buildLandscapeContent(),
               if (!isLandscape)
-                SizedBox(
-                    height: (mediaQuery.size.height -
-                            appBar.preferredSize.height -
-                            mediaQuery.padding.top) *
-                        0.3,
-                    child: Chart(_recentTransactions)),
-              if (!isLandscape) txListWidget,
-              if (isLandscape)
-                _showChart
-                    ? SizedBox(
-                        height: (mediaQuery.size.height -
-                                appBar.preferredSize.height -
-                                mediaQuery.padding.top) *
-                            0.7,
-                        child: Chart(_recentTransactions))
-                    : txListWidget
+                ..._buildPortraitContent(
+                  mediaQuery,
+                  appBar,
+                  txListWidget,
+                ),
+              if (!isLandscape)
+                if (isLandscape)
+                  _showChart
+                      ? SizedBox(
+                          height: (mediaQuery.size.height -
+                                  appBar.preferredSize.height -
+                                  mediaQuery.padding.top) *
+                              0.7,
+                          child: Chart(_recentTransactions))
+                      : txListWidget
             ]),
       ),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
