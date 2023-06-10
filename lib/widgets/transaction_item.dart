@@ -41,7 +41,7 @@ class TransactionItem extends StatelessWidget {
         ),
         title: Text(
           transaction.title,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         subtitle: Text(
           DateFormat.yMMMd().format(
@@ -51,7 +51,7 @@ class TransactionItem extends StatelessWidget {
         trailing: mediaQuery.size.width > 300
             ? TextButton.icon(
                 style:
-                    TextButton.styleFrom(primary: Theme.of(context).errorColor),
+                    TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
                 icon: Icon(
                   Icons.delete,
                 ),
@@ -62,7 +62,7 @@ class TransactionItem extends StatelessWidget {
               )
             : IconButton(
                 icon: const Icon(Icons.delete),
-                color: Theme.of(context).errorColor,
+                color: Theme.of(context).colorScheme.error,
                 onPressed: () => deleteTx(transaction.id),
               ),
       ),

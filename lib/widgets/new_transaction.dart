@@ -101,7 +101,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 ElevatedButton(
                   onPressed: () => _submitData(),
                   style: ElevatedButton.styleFrom(
-                    primary: Theme.of(context).colorScheme.primary,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
                   ),
                   child: Text("Add Transaction"),
                 )

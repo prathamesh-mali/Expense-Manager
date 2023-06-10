@@ -6,8 +6,6 @@ import 'package:expenses_manager/widgets/transaction_list.dart';
 import 'package:expenses_manager/models/transaction.dart';
 
 void main() {
-  // SystemChrome.setPreferredOrientations(
-  //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 
@@ -26,12 +24,12 @@ class MyApp extends StatelessWidget {
               background: Colors.pink[50]),
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: TextStyle(
+              titleLarge: TextStyle(
                 fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
-              button: TextStyle(color: Colors.white)),
+              labelLarge: TextStyle(color: Colors.white)),
           appBarTheme: AppBarTheme(
               titleTextStyle: TextStyle(
                   fontFamily: "OpenSans",
